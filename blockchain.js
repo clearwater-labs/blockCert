@@ -1,9 +1,6 @@
 // import the hashing lib
 const SHA256 = require("crypto-js/sha256");
 
-var dt = new Date();
-var timestamp = dt.toString();
-
 class Block {
   constructor(index, timestamp, data, previousHash = "") {
     this.index = index;
@@ -34,7 +31,7 @@ class Block {
 class Blockchain {
   constructor() {
     this.chain = [this.createGenesis()];
-    this.difficulty = 5;
+    this.difficulty = 4;
   }
 
   createGenesis() {
@@ -68,7 +65,7 @@ class Blockchain {
 
 let testChain = new Blockchain();
 
-for (let i = 0; i < 2; i++) {
+for (let i = 0; i < 100; i++) {
   console.log("Mining block...");
   testChain.addBlock(new Block(i, Date.now(), `This is block ${i}`));
 }
